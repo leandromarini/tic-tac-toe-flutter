@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:tictactoe/controllers/game_controller.dart';
 import 'package:tictactoe/core/constants.dart';
+import 'package:tictactoe/core/theme_app.dart';
 import 'package:tictactoe/enums/player_type.dart';
 import 'package:tictactoe/enums/winner_type.dart';
 import 'package:tictactoe/widgets/custom_dialog.dart';
@@ -25,6 +27,7 @@ class _GamePageState extends State<GamePage> {
     return AppBar(
       title: Text(GAME_TITLE),
       centerTitle: true,
+      actions: [_buildShareButton('Venha jogar Tic Tac Toe!!')],
     );
   }
 
@@ -47,6 +50,18 @@ class _GamePageState extends State<GamePage> {
       padding: const EdgeInsets.all(20),
       child: Text(RESET_BUTTON_LABEL),
       onPressed: _onResetGame,
+    );
+  }
+
+  _buildShareButton(text) {
+    return IconButton(
+      icon: Icon(
+        Icons.share,
+        color: Theme.of(context).secondaryHeaderColor,
+      ),
+      onPressed: () {
+        Share.share(text);
+      },
     );
   }
 
