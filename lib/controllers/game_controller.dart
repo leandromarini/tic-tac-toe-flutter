@@ -10,6 +10,8 @@ class GameController {
   List<BoardTile> tiles = [];
   List<int> movesPlayer1 = [];
   List<int> movesPlayer2 = [];
+  int scorePlayer1 = 0;
+  int scorePlayer2 = 0;
   PlayerType currentPlayer;
   bool isSinglePlayer;
 
@@ -68,8 +70,15 @@ class GameController {
   }
 
   WinnerType checkWinner() {
-    if (_checkPlayerWinner(movesPlayer1)) return WinnerType.player1;
-    if (_checkPlayerWinner(movesPlayer2)) return WinnerType.player2;
+    if (_checkPlayerWinner(movesPlayer1)) {
+      scorePlayer1++;
+      return WinnerType.player1;
+    }
+    if (_checkPlayerWinner(movesPlayer2)) {
+      scorePlayer2++;
+      return WinnerType.player2;
+    }
+
     return WinnerType.none;
   }
 

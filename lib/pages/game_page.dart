@@ -36,10 +36,34 @@ class _GamePageState extends State<GamePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          _buildScore(),
           _buildPlayerTurn(),
           _buildBoard(),
           _buildPlayerMode(),
           _buildResetButton(),
+        ],
+      ),
+    );
+  }
+
+  _buildScore() {
+    return Container(
+      margin: EdgeInsets.all(20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Column(
+            children: [
+              Text('Player 1'),
+              Text(_controller.scorePlayer1.toString())
+            ],
+          ),
+          Column(
+            children: [
+              Text('Player 2'),
+              Text(_controller.scorePlayer2.toString())
+            ],
+          )
         ],
       ),
     );
