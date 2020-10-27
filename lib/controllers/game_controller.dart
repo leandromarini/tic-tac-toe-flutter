@@ -47,6 +47,7 @@ class GameController {
   void _markBoardTileWithPlayer1(BoardTile tile) {
     tile.symbol = PLAYER1_SYMBOL;
     tile.color = PLAYER1_COLOR;
+    tile.image = PLAYER1_IMAGE;
     movesPlayer1.add(tile.id);
     currentPlayer = PlayerType.player2;
   }
@@ -54,6 +55,7 @@ class GameController {
   void _markBoardTileWithPlayer2(BoardTile tile) {
     tile.symbol = PLAYER2_SYMBOL;
     tile.color = PLAYER2_COLOR;
+    tile.image = PLAYER2_IMAGE;
     movesPlayer2.add(tile.id);
     currentPlayer = PlayerType.player1;
   }

@@ -36,8 +36,8 @@ class _GamePageState extends State<GamePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _buildBoard(),
           _buildPlayerTurn(),
+          _buildBoard(),
           _buildPlayerMode(),
           _buildResetButton(),
         ],
@@ -100,20 +100,13 @@ class _GamePageState extends State<GamePage> {
 
   Widget _buildTile(context, index) {
     return GestureDetector(
-      onTap: () => _onMarkTile(index),
-      child: Container(
-        color: _controller.tiles[index].color,
-        child: Center(
-          child: Text(
-            _controller.tiles[index].symbol,
-            style: TextStyle(
-              fontSize: 72.0,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
-    );
+        onTap: () => _onMarkTile(index),
+        child: Container(
+            color: _controller.tiles[index].color,
+            child: Center(
+                child: _controller.tiles[index].symbol.isEmpty
+                    ? Text(_controller.tiles[index].symbol)
+                    : Image.asset(_controller.tiles[index].image))));
   }
 
   _onResetGame() {
