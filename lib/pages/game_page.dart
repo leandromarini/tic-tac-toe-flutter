@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:tictactoe/controllers/game_controller.dart';
 import 'package:tictactoe/core/constants.dart';
-import 'package:tictactoe/core/theme_app.dart';
 import 'package:tictactoe/enums/player_type.dart';
 import 'package:tictactoe/enums/winner_type.dart';
 import 'package:tictactoe/widgets/custom_dialog.dart';
@@ -38,8 +37,27 @@ class _GamePageState extends State<GamePage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _buildBoard(),
+          _buildPlayerTurn(),
           _buildPlayerMode(),
           _buildResetButton(),
+        ],
+      ),
+    );
+  }
+
+  _buildPlayerTurn() {
+    return Container(
+      margin: EdgeInsets.all(20),
+      child: Column(
+        children: [
+          Text(
+            _controller.currentPlayer == PlayerType.player1
+                ? "Player's 1 Turn"
+                : "Player's 2 Turn",
+            style: TextStyle(
+              fontSize: 30,
+            ),
+          ),
         ],
       ),
     );
